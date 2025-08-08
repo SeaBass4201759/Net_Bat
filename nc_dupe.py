@@ -109,7 +109,7 @@ if __name__ == '__main__':
     if args.listen:
         buffer = ''
     else:
-        buffer = sys.stdin.read()
+        buffer = '' if sys.stdin.isatty() else sys.stdin.read()
 
     nc = NetCat(args, buffer.encode())
     nc.run()
